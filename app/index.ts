@@ -13,7 +13,7 @@ app.set('view engine', 'ejs')
 
 app.get("/", async (req, res) => {
   const urls: IURL[] = await URLModel.find().exec();
-  res.render("index", {urls: urls})
+  res.render("./views/index", {urls: urls})
 });
 
 app.use("/urls", urlRoutes);
