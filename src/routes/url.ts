@@ -16,7 +16,9 @@ routes.get("/all", async (req, res) => {
 
 routes.get('/:code', async (req, res) => {
     try {
-        const url = await URLModel.findOne({ urlCode: req.params.code })
+        console.log("DEBUG /:CODE: ", req.params.code)
+        const url = await URLModel.findOne({ shortUrl: req.params.code })
+        
         if (url) {
             return res.redirect(url.originalUrl)
         }
