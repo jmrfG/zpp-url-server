@@ -17,7 +17,7 @@ routes.get("/all", async (req, res) => {
 routes.get('/:code', async (req, res) => {
     try {
         console.log("DEBUG /:CODE: ", req.params.code)
-        const url = await URLModel.findOne({ shortUrl: req.params.code })
+        const url = await URLModel.findOne({ urlCode: req.params.code })
         
         if (url) {
             return res.redirect(url.originalUrl)
@@ -49,7 +49,7 @@ routes.post("/shorten", async (req, res) => {
 
 
         let urlCode = generate()
-        let shortUrl = "zpp.up.railway.app" + "/" + urlCode
+        let shortUrl = "zpp.up.railway.app/urls" + "/" + urlCode
         const newUrl = await URLModel.create({
             originalUrl: url.originalUrl,
             urlCode: urlCode,
