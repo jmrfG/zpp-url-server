@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { IURL, URLModel } from "../models/urls";
+import { generate } from 'shortid';
 
 const routes = Router();
 
@@ -7,32 +8,58 @@ routes.get("/all", async (req, res) => {
     try {
         const urls: IURL[] = await URLModel.find().exec();
         return res.json(urls);
-      } catch (error) {
+    } catch (error) {
         console.error(error);
         return res.status(500).json({ error: "Sorry, something went wrong :/" });
-      }
+    }
 })
 
-routes.post("/shorten", async(req,res)=> {
+routes.get('/:code', async (req, res) => {
+    try {
+        const url = await URLModel.findOne({ urlCode: req.params.code })
+        if (url) {
+            return res.redirect(url.originalUrl)
+        }
+        else {
+            return res.status(404).json('No URL Found')
+        }
+
+    }
+    catch (err) {
+        console.error(err)
+        res.status(500).json('Server Error')
+    }
+})
+
+routes.post("/shorten", async (req, res) => {
     try {
         const url: IURL = req.body;
-    
+
         const countryExists = await URLModel.findOne({
-          shortUrl: url.shortUrl,
+            shortUrl: url.shortUrl,
         }).exec();
-    
+
         if (countryExists) {
-          return res
-            .status(409)
-            .json({ error: "There is already another url with this path" });
+            return res
+                .status(409)
+                .json({ error: "There is already another url with this path" });
         }
-    
-        const newUrl = await URLModel.create(url);
+
+
+        let urlCode = generate()
+        let shortUrl = "zpp.sh" + "/" + urlCode
+        const newUrl = await URLModel.create({
+            originalUrl: url.originalUrl,
+            shortUrl: shortUrl,
+            isValid: true,
+            dateOfCreation: new Date().getUTCDate()
+        });
+
         return res.status(201).json(newUrl);
-      } catch (error) {
+    } catch (error) {
         console.error(error);
         return res.status(500).json({ error: "Sorry, something went wrong :/" });
-      }
+    }
 })
 
 export default routes;

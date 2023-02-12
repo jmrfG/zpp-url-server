@@ -17,7 +17,8 @@ const URLSchema = new Schema ({
         unique:true,
     },
     isValid: {
-        type:Boolean
+        type:Boolean,
+        default: true,
     },
     dateOfCreation:{
         type:Date,
