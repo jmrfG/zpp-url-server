@@ -5,6 +5,8 @@ import { generate } from 'shortid';
 const routes = Router();
 
 routes.get("/all", async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+
     try {
         const urls: IURL[] = await URLModel.find().exec();
         return res.json(urls);
@@ -15,6 +17,8 @@ routes.get("/all", async (req, res) => {
 })
 
 routes.get('/:code', async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+
     try {
         console.log("DEBUG /:CODE: ", req.params.code)
         const url = await URLModel.findOne({ urlCode: req.params.code })
