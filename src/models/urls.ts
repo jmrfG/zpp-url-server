@@ -5,6 +5,7 @@ interface IURL extends Document {
     shortUrl: string,
     isValid: boolean,
     dateOfCreation:Date,
+    urlCode: string
 }
 
 const URLSchema = new Schema ({
@@ -14,6 +15,10 @@ const URLSchema = new Schema ({
     },
     shortUrl: {
         type:String,
+        unique:true,
+    },
+    urlCode: {
+        type: String,
         unique:true,
     },
     isValid: {
