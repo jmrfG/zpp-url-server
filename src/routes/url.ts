@@ -34,9 +34,9 @@ routes.get('/:code', async (req, res) => {
 routes.post("/shorten", async (req, res) => {
     try {
         const url: IURL = req.body;
-        console.log(url)
+        
         const countryExists = await URLModel.findOne({
-            shortUrl: url.shortUrl,
+            originalUrl: url.originalUrl,
         }).exec();
 
         if (countryExists) {
