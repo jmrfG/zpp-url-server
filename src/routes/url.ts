@@ -47,7 +47,7 @@ routes.post("/shorten", async (req, res) => {
 
 
         let urlCode = generate()
-        let shortUrl = "zpp.sh" + "/" + urlCode
+        let shortUrl = "zpp.up.railway.app" + "/" + urlCode
         const newUrl = await URLModel.create({
             originalUrl: url.originalUrl,
             shortUrl: shortUrl,
