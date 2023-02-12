@@ -34,7 +34,7 @@ routes.get('/:code', async (req, res) => {
 routes.post("/shorten", async (req, res) => {
     try {
         const url: IURL = req.body;
-
+        console.log(url)
         const countryExists = await URLModel.findOne({
             shortUrl: url.shortUrl,
         }).exec();
@@ -49,10 +49,10 @@ routes.post("/shorten", async (req, res) => {
         let urlCode = generate()
         let shortUrl = "zpp.sh" + "/" + urlCode
         const newUrl = await URLModel.create({
-            originalUrl: url.originalUrl,
+            originalUrl: url,
             shortUrl: shortUrl,
             isValid: true,
-            dateOfCreation: new Date().getUTCDate()
+            dateOfCreation: new Date().getTime()
         });
 
         return res.status(201).json(newUrl);
