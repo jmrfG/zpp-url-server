@@ -34,6 +34,7 @@ routes.get('/:code', async (req, res) => {
 })
 
 routes.post("/shorten", async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     try {
         const url: IURL = req.body;
         console.log("DEBUG:", url);
