@@ -49,7 +49,7 @@ routes.post("/shorten", async (req, res) => {
         let urlCode = generate()
         let shortUrl = "zpp.sh" + "/" + urlCode
         const newUrl = await URLModel.create({
-            originalUrl: url,
+            originalUrl: url.originalUrl,
             shortUrl: shortUrl,
             isValid: true,
             dateOfCreation: new Date().getTime()
