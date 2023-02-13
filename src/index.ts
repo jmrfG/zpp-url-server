@@ -15,7 +15,7 @@ app.get("/", async (req, res) => {
   res.json({ message: "" });
 });
 
-app.use("/urls", urlRoutes);
+app.use("/", urlRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
