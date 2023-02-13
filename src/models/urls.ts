@@ -1,5 +1,9 @@
 import { model, Schema, Document } from "mongoose";
 
+function sizeLimit(val: String) {
+    return val.length <= 2048;
+}
+
 interface IURL extends Document {
     originalUrl: string,
     shortUrl: string,
@@ -11,7 +15,8 @@ interface IURL extends Document {
 const URLSchema = new Schema ({
     originalUrl: {
         type:String,
-        unique: true
+        unique: true,
+        validate: [sizeLimit, "Original link exceeds the size limit of 2048 bytes"]
     },
     shortUrl: {
         type:String,
