@@ -33,7 +33,7 @@ const URLSchema = new Schema ({
     dateOfCreation:{
         type:Date,
         default: new Date().getDate(),
-        expires: 60*60*24,
+        expires: 86400000, //using ms
     },
 });
 
