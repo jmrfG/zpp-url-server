@@ -56,7 +56,7 @@ routes.post("/shorten", async (req, res) => {
             urlCode: urlCode,
             shortUrl: shortUrl,
             isValid: true,
-            dateOfCreation: Date.now
+            dateOfCreation: Date.now()
         });
         console.log("DEBUG2: ", newUrl)
         return res.status(201).json(newUrl);
