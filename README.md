@@ -10,6 +10,7 @@
 ## About <a name = "about"></a>
 This project is a implementation of a URL shortener using **Express, TypeScript and MongoDB**. It's a tool that helps to shorten a long URL (Uniform Resource Locator) into a shorter, more manageable form. The shortened URL, then, redirects to the original URL when accessed, allowing it to be shared or saved more easily in various online platforms, such as social media, email, or text messages, where space is limited. The purpose of a URL shortener is to make it easier to share links, save space and simplify the URL, making it more user-friendly.
 
+### Check the live demonstration at the following link: [zsurl.vercel.app](https://zsurl.vercel.app)
 
 ## Getting Started <a name = "getting_started"></a>
 
