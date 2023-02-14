@@ -44,6 +44,10 @@ TTL=<time in seconds>
 
 ## Usage <a name = "usage"></a>
 
+After following the previows steps, run:
+ 	`npm run dev` to start the dev server
+or `npm run` to get a list of possible commands.	
+
 Right now, the server has only three routes:
 
 -   A  `GET`  route -  `/all`  which returns all the urls in the collection.
