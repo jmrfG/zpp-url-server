@@ -38,11 +38,11 @@ routes.post("/shorten", async (req, res) => {
     try {
         const url: IURL = req.body;
         console.log("DEBUG:", url);
-        const countryExists = await URLModel.findOne({
+        const urlExists = await URLModel.findOne({
             originalUrl: url.originalUrl,
         }).exec();
 
-        if (countryExists) {
+        if (urlExists) {
             return res
                 .status(409)
                 .json({ error: "There is already another url with this path" });
