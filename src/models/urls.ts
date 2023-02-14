@@ -1,4 +1,8 @@
 import { model, Schema, Document } from "mongoose";
+import * as dotenv from "dotenv"
+dotenv.config()
+
+const EXPIRES = process.env.TTL || 24 * 60 * 60
 
 function sizeLimit(val: String) {
     return val.length <= 2048;
@@ -29,7 +33,7 @@ const URLSchema = new Schema ({
     dateOfCreation:{
         type:Date,
         default: Date.now(),
-        expires: 24 * 60 * 60, // 24 hours
+        expires: EXPIRES, // 24 hours
     },
 });
 
