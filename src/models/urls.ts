@@ -4,10 +4,10 @@ function sizeLimit(val: String) {
     return val.length <= 2048;
 }
 
+
 interface IURL extends Document {
     originalUrl: string,
     shortUrl: string,
-    isValid: boolean,
     dateOfCreation:Date,
     urlCode: string
 }
@@ -25,10 +25,6 @@ const URLSchema = new Schema ({
     urlCode: {
         type: String,
         unique:true,
-    },
-    isValid: {
-        type:Boolean,
-        default: true,
     },
     dateOfCreation:{
         type:Date,
