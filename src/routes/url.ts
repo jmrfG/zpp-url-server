@@ -1,7 +1,10 @@
 import { Router } from "express";
 import { IURL, URLModel } from "../models/urls";
 import { generate } from 'shortid';
+import * as dotenv from "dotenv"
+dotenv.config()
 
+const BASE_URL = process.env.BASE_URL || "zpp.up.railway.app/"
 const routes = Router();
 
 routes.get("/all", async (req, res) => {
@@ -50,7 +53,7 @@ routes.post("/shorten", async (req, res) => {
 
 
         let urlCode = generate()
-        let shortUrl = "zpp.up.railway.app/" + urlCode
+        let shortUrl = BASE_URL + urlCode
         const newUrl = await URLModel.create({
             originalUrl: url.originalUrl,
             urlCode: urlCode,

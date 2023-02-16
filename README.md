@@ -39,8 +39,9 @@ This project local environment takes two properties: a MONGO_URL and a TTL to se
 ````
 MONGO_URL="<connection_string>"
 TTL=<time in seconds>
+BASE_URL"<server_address>"
 ```` 
-
+If no BASE_URL is given, the application will use localhost:3333 as the base url.
 
 ## Usage <a name = "usage"></a>
 
