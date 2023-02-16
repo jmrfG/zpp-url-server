@@ -4,7 +4,7 @@ import { generate } from 'shortid';
 import * as dotenv from "dotenv"
 dotenv.config()
 
-const BASE_URL = process.env.BASE_URL || "zpp.up.railway.app/"
+const BASE_URL = process.env.BASE_URL || "http://localhost:3333/"
 const routes = Router();
 
 routes.get("/all", async (req, res) => {
